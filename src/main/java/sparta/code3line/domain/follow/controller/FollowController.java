@@ -15,6 +15,7 @@ import sparta.code3line.security.UserPrincipal;
 
 import java.time.LocalDateTime;
 
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +23,7 @@ import java.time.LocalDateTime;
 public class FollowController {
 
     private final FollowService followService;
+
 
     @PostMapping
     public ResponseEntity<CommonResponse<FollowResponseDto>> createFollow(

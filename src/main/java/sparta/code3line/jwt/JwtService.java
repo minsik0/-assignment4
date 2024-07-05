@@ -76,9 +76,8 @@ public class JwtService {
 
     // 토큰 생성
     private String createToken(String username, Long expirationTime) {
-
         Date now = new Date();
-        return BEARER_PREFIX +
+        String token = BEARER_PREFIX +
                 Jwts.builder()
                         .setSubject(username)
                         .setIssuedAt(now)
@@ -86,6 +85,8 @@ public class JwtService {
                         .signWith(key, signatureAlgorithm)
                         .compact();
 
+        log.info("Created Token for username {}: {}", username, token); // 생성된 토큰 로그 출력
+        return token;
     }
 
     // 토큰 검증

@@ -3,10 +3,16 @@ package sparta.code3line.domain.follow.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sparta.code3line.common.exception.CustomException;
+import sparta.code3line.domain.board.dto.BoardResponseDto;
+import sparta.code3line.domain.board.entity.Board;
+import sparta.code3line.domain.board.repository.BoardRepository;
 import sparta.code3line.domain.follow.entity.Follow;
 import sparta.code3line.domain.follow.repository.FollowRepository;
 import sparta.code3line.domain.user.entity.User;
 import sparta.code3line.domain.user.repository.UserRepository;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static sparta.code3line.common.exception.ErrorCode.*;
 
@@ -16,6 +22,7 @@ public class FollowService {
 
     private final FollowRepository followRepository;
     private final UserRepository userRepository;
+    private final BoardRepository boardRepository;
 
     // 팔로우 기능
     public void followUser(Long followingUserId, User follower) {
@@ -67,4 +74,6 @@ public class FollowService {
         return followRepository.findByFollowingIdAndFollowerId(followingUserId, followerId).isPresent();
 
     }
+
+
 }
